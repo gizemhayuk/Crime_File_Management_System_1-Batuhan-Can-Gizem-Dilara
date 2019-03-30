@@ -1,5 +1,7 @@
 package CrimeFile;
 
+package CrimeFile;
+
 import java.awt.EventQueue;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -21,13 +23,8 @@ import javax.swing.JTextArea;
 
 public class CriminalRecord extends JFrame {
 
-	private JTextField Name;
-	private JTextField Surname;
-	private JTextField CitizenshipNumber;
-	private JTextField DOB;
-	private JTextField BirthPlace;
-	private JTextField textField;
-	private JTextArea  CrimeRecord;
+	private JTextField Name, Surname, CitizenshipNumber,DOB, BirthPlace, textField;
+	JTextArea CrimeRecord;
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -81,7 +78,7 @@ public class CriminalRecord extends JFrame {
 		newBirthPlace.setForeground(new Color(255, 255, 255));
 		newBirthPlace.setBounds(80, 176, 89, 14);
 		getContentPane().add(newBirthPlace);
-		
+
 		JLabel newCrimeRecord = new JLabel("Crime Record:\r\n\r\n");
 		newCrimeRecord.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		newCrimeRecord.setForeground(new Color(255, 255, 255));
@@ -99,7 +96,7 @@ public class CriminalRecord extends JFrame {
 		});
 		btnSave.setBounds(170, 268, 89, 23);
 		getContentPane().add(btnSave);
-		
+
 		Name = new JTextField();
 		Name.setColumns(10);
 		Name.setBounds(217, 46, 137, 22);
@@ -129,7 +126,7 @@ public class CriminalRecord extends JFrame {
 		CrimeRecord.setBounds(217, 207, 194, 48);
 		getContentPane().add(CrimeRecord);
 		CrimeRecord.setColumns(10);
-	
+
 
 	}
 
@@ -188,16 +185,16 @@ public class CriminalRecord extends JFrame {
 		Boolean status = false;
 
 		try {
-			Class.forName("com.mysql.jdbc.Driver");
+			//Class.forName("com.mysql.jdbc.Driver");
 
 			connect = DriverManager
-					.getConnection("" + "jdbc:mysql://localhost/new_record" + "?user=root&password=123456");
+					.getConnection("jdbc:mysql://localhost:3306/new_record?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=Turkey");
 
 			s = connect.createStatement();
 
 			// SQL Insert
-			String sql = "INSERT INTO new record "
-					+ "(Name,Surname,Citizenship Number,Date of Birth,Birth Place , Crime Record) " + "VALUES ('"
+			String sql = "INSERT INTO crime_record "
+					+ "(Name,Surname,CitizenshipNumber,DateofBirth,BirthPlace, CrimeRecord) " + "VALUES ('"
 					+ strName + "','" + strSurname + "','" + strCitizenshipNumber + "'" + ",'" + strDOB + "','"
 					+ strBirthPlace + "', '" + strCrimeRecord + "')";
 			s.execute(sql);
