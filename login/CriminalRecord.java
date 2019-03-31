@@ -1,7 +1,5 @@
 package CrimeFile;
 
-package CrimeFile;
-
 import java.awt.EventQueue;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -38,55 +36,58 @@ public class CriminalRecord extends JFrame {
 	// Create the frame.
 
 	public CriminalRecord() {
+		getContentPane().setFont(new Font("Century Gothic", Font.PLAIN, 16));
 		getContentPane().setBackground(new Color(1, 50, 67));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 454, 343);
+		setBounds(100, 100, 635, 659);
 		getContentPane().setLayout(null);
 
 		JLabel newRecord = new JLabel("CRIMINAL RECORD SYSTEM\r\n");
+		newRecord.setBounds(174, 41, 289, 20);
 		newRecord.setForeground(new Color(255, 255, 255));
-		newRecord.setFont(new Font("Tahoma", Font.BOLD, 16));
+		newRecord.setFont(new Font("Century Gothic", Font.BOLD, 20));
 		newRecord.setHorizontalAlignment(SwingConstants.CENTER);
-		newRecord.setBounds(78, 13, 276, 20);
 		getContentPane().add(newRecord);
 
 		JLabel newName = new JLabel("Name:");
+		newName.setBounds(78, 91, 289, 14);
 		newName.setForeground(new Color(255, 255, 255));
-		newName.setFont(new Font("Times New Roman", Font.PLAIN, 15));
-		newName.setBounds(78, 52, 89, 14);
+		newName.setFont(new Font("Century Gothic", Font.PLAIN, 16));
 		getContentPane().add(newName);
 
 		JLabel newSurname = new JLabel("Surname:");
-		newSurname.setFont(new Font("Times New Roman", Font.PLAIN, 15));
+		newSurname.setBounds(78, 124, 289, 21);
+		newSurname.setFont(new Font("Century Gothic", Font.PLAIN, 16));
 		newSurname.setForeground(new Color(255, 255, 255));
-		newSurname.setBounds(78, 79, 89, 21);
 		getContentPane().add(newSurname);
 
 		JLabel newCitizenshipNumber = new JLabel("Citizenship Number:\r\n");
+		newCitizenshipNumber.setBounds(77, 158, 290, 20);
 		newCitizenshipNumber.setForeground(new Color(255, 255, 255));
-		newCitizenshipNumber.setFont(new Font("Times New Roman", Font.PLAIN, 15));
-		newCitizenshipNumber.setBounds(77, 113, 130, 14);
+		newCitizenshipNumber.setFont(new Font("Century Gothic", Font.PLAIN, 16));
 		getContentPane().add(newCitizenshipNumber);
 
 		JLabel newDOB = new JLabel("Date Of Birth:\r\n");
+		newDOB.setFont(new Font("Century Gothic", Font.PLAIN, 16));
+		newDOB.setBounds(78, 191, 289, 23);
 		newDOB.setForeground(new Color(255, 255, 255));
-		newDOB.setBounds(78, 140, 89, 23);
 		getContentPane().add(newDOB);
 
 		JLabel newBirthPlace = new JLabel("Birth Place:");
-		newBirthPlace.setFont(new Font("Times New Roman", Font.PLAIN, 15));
+		newBirthPlace.setBounds(78, 227, 114, 22);
+		newBirthPlace.setFont(new Font("Century Gothic", Font.PLAIN, 16));
 		newBirthPlace.setForeground(new Color(255, 255, 255));
-		newBirthPlace.setBounds(80, 176, 89, 14);
 		getContentPane().add(newBirthPlace);
 
 		JLabel newCrimeRecord = new JLabel("Crime Record:\r\n\r\n");
-		newCrimeRecord.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		newCrimeRecord.setBounds(77, 395, 289, 31);
+		newCrimeRecord.setFont(new Font("Century Gothic", Font.PLAIN, 16));
 		newCrimeRecord.setForeground(new Color(255, 255, 255));
-		newCrimeRecord.setBounds(78, 217, 104, 31);
 		getContentPane().add(newCrimeRecord);
 
 		// Save Button
 		JButton btnSave = new JButton("Save");
+		btnSave.setBounds(238, 564, 145, 23);
 		btnSave.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if (RegisterData()) {
@@ -94,36 +95,35 @@ public class CriminalRecord extends JFrame {
 				}
 			}
 		});
-		btnSave.setBounds(170, 268, 89, 23);
 		getContentPane().add(btnSave);
 
 		Name = new JTextField();
+		Name.setBounds(238, 89, 166, 22);
 		Name.setColumns(10);
-		Name.setBounds(217, 46, 137, 22);
 		getContentPane().add(Name);
 
 		Surname = new JTextField();
-		Surname.setBounds(217, 76, 137, 22);
+		Surname.setBounds(238, 125, 166, 22);
 		getContentPane().add(Surname);
 		Surname.setColumns(10);
 
 		CitizenshipNumber = new JTextField();
-		CitizenshipNumber.setBounds(217, 109, 137, 22);
+		CitizenshipNumber.setBounds(238, 158, 166, 22);
 		getContentPane().add(CitizenshipNumber);
 		CitizenshipNumber.setColumns(10);
 
 		DOB = new JTextField();
-		DOB.setBounds(217, 140, 137, 22);
+		DOB.setBounds(238, 191, 166, 22);
 		getContentPane().add(DOB);
 		DOB.setColumns(10);
 
 		BirthPlace = new JTextField();
+		BirthPlace.setBounds(237, 227, 167, 22);
 		BirthPlace.setColumns(10);
-		BirthPlace.setBounds(217, 172, 137, 22);
 		getContentPane().add(BirthPlace);
 
 		CrimeRecord = new JTextArea();
-		CrimeRecord.setBounds(217, 207, 194, 48);
+		CrimeRecord.setBounds(221, 406, 351, 144);
 		getContentPane().add(CrimeRecord);
 		CrimeRecord.setColumns(10);
 
