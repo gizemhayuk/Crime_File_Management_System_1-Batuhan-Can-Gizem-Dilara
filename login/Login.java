@@ -23,6 +23,11 @@ import java.util.Properties;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
 import java.awt.SystemColor;
+import javax.swing.JSeparator;
+import javax.swing.ImageIcon;
+import javax.swing.JSplitPane;
+import javax.swing.UIManager;
+import javax.swing.JTextPane;
 
 public class Login extends JFrame {
 
@@ -53,39 +58,47 @@ public class Login extends JFrame {
 	 
 	public Login() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 815, 506);
 		contentPane = new JPanel();
-		contentPane.setBackground(new Color(46, 49, 49));
+		contentPane.setBackground(new Color(1,50,67));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
 		Password = new JPasswordField();
-		Password.setBackground(Color.GRAY);
-		Password.setBounds(128, 142, 274, 22);
+		Password.setToolTipText("");
+		Password.setFont(new Font("Century Gothic", Font.PLAIN, 16));
+		Password.setForeground(Color.WHITE);
+		Password.setBounds(449, 259, 310, 38);
+		Password.setBackground((new Color(1,50,67)));
 		contentPane.add(Password);
 
-		JLabel lblPassword = new JLabel("Password:");
+		JLabel lblPassword = new JLabel("Password");
+		lblPassword.setBounds(449, 210, 120, 35);
 		lblPassword.setForeground(new Color(255, 255, 255));
 		lblPassword.setBackground(new Color(255, 255, 255));
-		lblPassword.setFont(new Font("Times New Roman", Font.BOLD, 19));
-		lblPassword.setBounds(34, 134, 120, 35);
+		lblPassword.setFont(new Font("Century Gothic", Font.PLAIN, 16));
 		contentPane.add(lblPassword);
 
-		JLabel lblId = new JLabel("ID:");
+		JLabel lblId = new JLabel("Personal Identification Number ");
+		lblId.setBounds(449, 121, 279, 16);
 		lblId.setForeground(new Color(255, 255, 255));
-		lblId.setFont(new Font("Times New Roman", Font.BOLD, 20));
-		lblId.setBounds(96, 111, 56, 16);
+		lblId.setFont(new Font("Century Gothic", Font.PLAIN, 16));
 		contentPane.add(lblId);
 
 		ID = new JTextField();
-		ID.setBackground(Color.GRAY);
-		ID.setBounds(128, 109, 274, 22);
+		ID.setFont(new Font("Century Gothic", Font.PLAIN, 16));
+		ID.setForeground(Color.WHITE);
+		ID.setBounds(449, 159, 311, 38);
+		ID.setBackground((new Color(1,50,67)));
 		contentPane.add(ID);
 		ID.setColumns(10);
 
 		JButton btnNewButton = new JButton("Login");
-		btnNewButton.setFont(new Font("Times New Roman", Font.PLAIN, 15));
+		btnNewButton.setBackground(new Color(1,50,67));
+		btnNewButton.setForeground(Color.BLACK);
+		btnNewButton.setBounds(449, 340, 134, 38);
+		btnNewButton.setFont(new Font("Century Gothic", Font.PLAIN, 16));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 
@@ -97,34 +110,53 @@ public class Login extends JFrame {
 					String user = ID.getText(); // Collecting the input
 					char[] pass = Password.getPassword(); // Collecting the input
 					String pwd = String.copyValueOf(pass); // converting from array to string
-					if (getConnection(user, pwd))
+					if (getConnection(user, pwd)) {
 						JOptionPane.showMessageDialog(null, "Successful");
-					else
+					}else 
 						JOptionPane.showMessageDialog(null, "Try Again!");
+
 				}
 
 			}
 		});
-		btnNewButton.setBounds(128, 177, 97, 25);
 		contentPane.add(btnNewButton);
 
 		JButton btnNewButton_1 = new JButton("Register");
-		btnNewButton_1.setFont(new Font("Times New Roman", Font.PLAIN, 15));
-		btnNewButton_1.setBounds(233, 177, 97, 25);
+		btnNewButton_1.setForeground(Color.BLACK);
+		btnNewButton_1.setBackground(new Color(1,50,67));
+		btnNewButton_1.setBounds(625, 340, 134, 38);
+		btnNewButton_1.setFont(new Font("Century Gothic", Font.PLAIN, 16));
 		contentPane.add(btnNewButton_1);
 		
 		lblL = new JLabel("GENERAL DIRECTORATE OF SECURITY");
+		lblL.setBackground(new Color(128, 128, 128));
+		lblL.setBounds(392, 24, 419, 47);
 		lblL.setHorizontalAlignment(SwingConstants.CENTER);
-		lblL.setFont(new Font("Times New Roman", Font.BOLD, 15));
+		lblL.setFont(new Font("Century Gothic", Font.PLAIN, 21));
 		lblL.setForeground(new Color(255, 255, 255));
-		lblL.setBounds(24, 13, 408, 47);
 		contentPane.add(lblL);
 		
 		lblCrmeRecordSystem = new JLabel("CRIME RECORD SYSTEM");
-		lblCrmeRecordSystem.setFont(new Font("Times New Roman", Font.BOLD, 14));
+		lblCrmeRecordSystem.setBounds(501, 73, 209, 22);
+		lblCrmeRecordSystem.setFont(new Font("Century Gothic", Font.PLAIN, 18));
 		lblCrmeRecordSystem.setForeground(new Color(255, 255, 255));
-		lblCrmeRecordSystem.setBounds(139, 54, 176, 22);
 		contentPane.add(lblCrmeRecordSystem);
+		
+		JSeparator separator = new JSeparator();
+		separator.setBounds(761, 198, -316, -1);
+		contentPane.add(separator);
+		
+		JPanel panel = new JPanel();
+		panel.setBackground(new Color(228,241,254));
+		panel.setBounds(0, 0, 383, 459);
+		contentPane.add(panel);
+		panel.setLayout(null);
+		
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setBackground(new Color(169, 169, 169));
+		lblNewLabel.setBounds(-67, 33, 473, 400);
+		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\batuh\\Desktop\\Klas\u00F6rler\\workspace\\SE318-Crime File\\src\\images\\badge-drawing-police-officer-9.png"));
+		panel.add(lblNewLabel);
 	}
 
 	private boolean getConnection(String username,String password) {
