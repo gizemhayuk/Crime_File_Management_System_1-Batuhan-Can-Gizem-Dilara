@@ -1,33 +1,11 @@
 package CrimeFile;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.SwingConstants;
-import javax.swing.JTextField;
-import javax.swing.JPasswordField;
-import java.awt.Font;
-import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.Properties;
-import java.awt.event.ActionEvent;
-import java.awt.Color;
-import java.awt.SystemColor;
-import javax.swing.JSeparator;
-import javax.swing.ImageIcon;
-import javax.swing.JSplitPane;
-import javax.swing.UIManager;
-import javax.swing.JTextPane;
+import java.sql.*;
+import java.util.*;
 
 public class Login extends JFrame {
 
@@ -58,7 +36,7 @@ public class Login extends JFrame {
 	 
 	public Login() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 815, 506);
+		setBounds(100, 100, 857, 541);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(1,50,67));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -69,19 +47,19 @@ public class Login extends JFrame {
 		Password.setToolTipText("");
 		Password.setFont(new Font("Century Gothic", Font.PLAIN, 16));
 		Password.setForeground(Color.WHITE);
-		Password.setBounds(449, 259, 310, 38);
+		Password.setBounds(450, 338, 310, 38);
 		Password.setBackground((new Color(1,50,67)));
 		contentPane.add(Password);
 
 		JLabel lblPassword = new JLabel("Password");
-		lblPassword.setBounds(449, 210, 120, 35);
+		lblPassword.setBounds(450, 290, 120, 35);
 		lblPassword.setForeground(new Color(255, 255, 255));
 		lblPassword.setBackground(new Color(255, 255, 255));
 		lblPassword.setFont(new Font("Century Gothic", Font.PLAIN, 16));
 		contentPane.add(lblPassword);
 
 		JLabel lblId = new JLabel("Personal Identification Number ");
-		lblId.setBounds(449, 121, 279, 16);
+		lblId.setBounds(449, 198, 279, 16);
 		lblId.setForeground(new Color(255, 255, 255));
 		lblId.setFont(new Font("Century Gothic", Font.PLAIN, 16));
 		contentPane.add(lblId);
@@ -89,7 +67,7 @@ public class Login extends JFrame {
 		ID = new JTextField();
 		ID.setFont(new Font("Century Gothic", Font.PLAIN, 16));
 		ID.setForeground(Color.WHITE);
-		ID.setBounds(449, 159, 311, 38);
+		ID.setBounds(450, 237, 311, 38);
 		ID.setBackground((new Color(1,50,67)));
 		contentPane.add(ID);
 		ID.setColumns(10);
@@ -97,7 +75,7 @@ public class Login extends JFrame {
 		JButton btnNewButton = new JButton("Login");
 		btnNewButton.setBackground(new Color(1,50,67));
 		btnNewButton.setForeground(Color.BLACK);
-		btnNewButton.setBounds(449, 340, 134, 38);
+		btnNewButton.setBounds(449, 414, 134, 38);
 		btnNewButton.setFont(new Font("Century Gothic", Font.PLAIN, 16));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -122,9 +100,16 @@ public class Login extends JFrame {
 		contentPane.add(btnNewButton);
 
 		JButton btnNewButton_1 = new JButton("Register");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				CriminalRecord cr = new CriminalRecord();
+				cr.setVisible(true);
+				
+			}
+		});
 		btnNewButton_1.setForeground(Color.BLACK);
 		btnNewButton_1.setBackground(new Color(1,50,67));
-		btnNewButton_1.setBounds(625, 340, 134, 38);
+		btnNewButton_1.setBounds(619, 414, 134, 38);
 		btnNewButton_1.setFont(new Font("Century Gothic", Font.PLAIN, 16));
 		contentPane.add(btnNewButton_1);
 		
@@ -148,21 +133,38 @@ public class Login extends JFrame {
 		
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(228,241,254));
-		panel.setBounds(0, 0, 383, 459);
+		panel.setBounds(0, 0, 383, 494);
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setBackground(new Color(169, 169, 169));
 		lblNewLabel.setBounds(-67, 33, 473, 400);
-		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\batuh\\Desktop\\Klas\u00F6rler\\workspace\\SE318-Crime File\\src\\images\\badge-drawing-police-officer-9.png"));
+		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\\\Gizem\\eclipse-workspace\\SE318\\src\\se-318\\badge-drawing-police-officer-9.png"));
+		
 		panel.add(lblNewLabel);
+		
+		JComboBox<String> comboBox = new JComboBox<String>();
+		comboBox.setBounds(646, 140, 127, 24);
+		comboBox.addItem("");
+		comboBox.addItem("Police");
+		comboBox.addItem("Citizen");
+		
+		
+		contentPane.add(comboBox);
+		
+		JLabel lblPleaseSelectType = new JLabel("Please Select User Type:");
+		lblPleaseSelectType.setForeground(Color.WHITE);
+		lblPleaseSelectType.setFont(new Font("Century Gothic", Font.PLAIN, 16));
+		lblPleaseSelectType.setBackground(Color.WHITE);
+		lblPleaseSelectType.setBounds(450, 134, 197, 30);
+		contentPane.add(lblPleaseSelectType);
 	}
 
 	private boolean getConnection(String username,String password) {
 		   try{           
-		       Class.forName("com.mysql.jdbc.Driver");  // MySQL database connection
-		       Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/se318" + "user=root&password=123456");     
+		      // Class.forName("com.mysql.jdbc.Driver");  // MySQL database connection
+		       Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/se318?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=Turkey");     
 		       PreparedStatement pst = conn.prepareStatement("Select * from se318 where username=? and password=?");
 		       pst.setString(1, username); 
 		       pst.setString(2, password);
