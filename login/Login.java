@@ -1,5 +1,6 @@
 package CrimeFile;
 
+
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
@@ -89,7 +90,8 @@ public class Login extends JFrame {
 					char[] pass = Password.getPassword(); // Collecting the input
 					String pwd = String.copyValueOf(pass); // converting from array to string
 					if (getConnection(user, pwd)) {
-						JOptionPane.showMessageDialog(null, "Successful");
+						CitizenPage userpage= new CitizenPage();
+						userpage.setVisible(true);
 					}else 
 						JOptionPane.showMessageDialog(null, "Try Again!");
 
@@ -144,15 +146,7 @@ public class Login extends JFrame {
 		
 		panel.add(lblNewLabel);
 		
-		JComboBox<String> comboBox = new JComboBox<String>();
-		comboBox.setBounds(646, 140, 127, 24);
-		comboBox.addItem("");
-		comboBox.addItem("Police");
-		comboBox.addItem("Citizen");
-		
-		
-		contentPane.add(comboBox);
-		
+	
 		JLabel lblPleaseSelectType = new JLabel("Please Select User Type:");
 		lblPleaseSelectType.setForeground(Color.WHITE);
 		lblPleaseSelectType.setFont(new Font("Century Gothic", Font.PLAIN, 16));
