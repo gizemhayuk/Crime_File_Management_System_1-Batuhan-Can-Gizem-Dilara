@@ -1,4 +1,5 @@
 package CrimeFile;
+
 import java.awt.EventQueue;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -83,7 +84,8 @@ public class CriminalRecord extends JFrame {
 		btnSave.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if (RegisterData()) {
-					JOptionPane.showMessageDialog(null, "Register Data Successfully");
+					Login l = new Login();
+					l.setVisible(true);
 				}
 			}
 		});
@@ -175,8 +177,8 @@ public class CriminalRecord extends JFrame {
 			s = connect.createStatement();
 
 			// SQL Insert
-			String sql = "INSERT INTO crime_record "
-					+ "(Name,Surname,CitizenshipNumber,DateofBirth,BirthPlace, CrimeRecord) " + "VALUES ('"
+			String sql = "INSERT INTO registration "
+					+ "(Name,Surname,CitizenshipNumber,DateofBirth,BirthPlace) " + "VALUES ('"
 					+ strName + "','" + strSurname + "','" + strCitizenshipNumber + "'" + ",'" + strDOB + "','"
 					+ strBirthPlace + "')";
 			s.execute(sql);
@@ -209,4 +211,3 @@ public class CriminalRecord extends JFrame {
 
 	}
 }
-
