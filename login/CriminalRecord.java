@@ -21,12 +21,13 @@ import javax.swing.JTextArea;
 
 public class CriminalRecord extends JFrame {
 
-	private JTextField Name, Surname, CitizenshipNumber,DOB, BirthPlace, textField;
+	private JTextField Name, Surname, CitizenshipNumber, DOB, BirthPlace, textField;
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				CriminalRecord frame = new CriminalRecord();
+				frame.setTitle("Crime Record System");
 				frame.setVisible(true);
 			}
 		});
@@ -80,10 +81,12 @@ public class CriminalRecord extends JFrame {
 
 		// Save Button
 		JButton btnSave = new JButton("Save");
-		btnSave.setBounds(238, 373, 166, 25);
+		btnSave.setFont(new Font("Tahoma", Font.BOLD, 15));
+		btnSave.setBounds(238, 361, 100, 34);
 		btnSave.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				if (RegisterData()) {
+				if (RegisterData(Name.getText(), Surname.getText(), CitizenshipNumber.getText(), DOB.getText(),
+						BirthPlace.getText())) {
 					Login l = new Login();
 					l.setVisible(true);
 				}
@@ -92,42 +95,37 @@ public class CriminalRecord extends JFrame {
 		getContentPane().add(btnSave);
 
 		Name = new JTextField();
-		Name.setBounds(238, 115, 166, 22);
+		Name.setBounds(238, 115, 223, 22);
 		Name.setColumns(10);
 		getContentPane().add(Name);
 
 		Surname = new JTextField();
-		Surname.setBounds(238, 159, 166, 22);
+		Surname.setBounds(238, 159, 223, 22);
 		getContentPane().add(Surname);
 		Surname.setColumns(10);
 
 		CitizenshipNumber = new JTextField();
-		CitizenshipNumber.setBounds(238, 204, 166, 22);
+		CitizenshipNumber.setBounds(238, 204, 223, 22);
 		getContentPane().add(CitizenshipNumber);
 		CitizenshipNumber.setColumns(10);
 
 		DOB = new JTextField();
-		DOB.setBounds(238, 257, 166, 22);
+		DOB.setBounds(238, 257, 223, 22);
 		getContentPane().add(DOB);
 		DOB.setColumns(10);
 
 		BirthPlace = new JTextField();
-		BirthPlace.setBounds(237, 309, 167, 22);
+		BirthPlace.setBounds(237, 309, 224, 22);
 		BirthPlace.setColumns(10);
 		getContentPane().add(BirthPlace);
 
-
 	}
 
-	private Boolean RegisterData() {
+	// REGISTER TO THE SYSTEM
+	public Boolean RegisterData(String strName, String strSurname, String strCitizenshipNumber, String strDOB,
+			String strBirthPlace) {
 
-		String strName = Name.getText();
-		String strSurname = new String(Surname.getText());
-		String strCitizenshipNumber = new String(CitizenshipNumber.getText());
-		String strDOB = DOB.getText();
-		String strBirthPlace = BirthPlace.getText();
-	
-
+		// checks if user enters nothing
 		if (strName.equals("")) // Name
 		{
 			JOptionPane.showMessageDialog(null, "Please Input (Username)");
@@ -162,25 +160,21 @@ public class CriminalRecord extends JFrame {
 			return false;
 		}
 
-		
-
 		Connection connect = null;
 		Statement s = null;
 		Boolean status = false;
 
 		try {
-			//Class.forName("com.mysql.jdbc.Driver");
 
-			connect = DriverManager
-					.getConnection("jdbc:mysql://localhost:3306/new_record?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=Turkey");
+			connect = DriverManager.getConnection(
+					"jdbc:mysql://localhost:3306/new_record?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=Turkey");
 
 			s = connect.createStatement();
 
 			// SQL Insert
-			String sql = "INSERT INTO registration "
-					+ "(Name,Surname,CitizenshipNumber,DateofBirth,BirthPlace) " + "VALUES ('"
-					+ strName + "','" + strSurname + "','" + strCitizenshipNumber + "'" + ",'" + strDOB + "','"
-					+ strBirthPlace + "')";
+			String sql = "INSERT INTO registration " + "(Name,Surname,CitizenshipNumber,DateofBirth,BirthPlace) "
+					+ "VALUES ('" + strName + "','" + strSurname + "','" + strCitizenshipNumber + "'" + ",'" + strDOB
+					+ "','" + strBirthPlace + "')";
 			s.execute(sql);
 
 			// Reset Text Fields
@@ -189,7 +183,7 @@ public class CriminalRecord extends JFrame {
 			CitizenshipNumber.setText("");
 			DOB.setText("");
 			BirthPlace.setText("");
-		
+
 			status = true;
 
 		} catch (Exception e) {

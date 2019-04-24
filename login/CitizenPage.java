@@ -91,7 +91,9 @@ public class CitizenPage extends JFrame {
 		btnNewButton.setBounds(457, 390, 97, 25);
 		contentPane.add(btnNewButton);
 	}
-	private Boolean RegisterData() {
+	
+	//CITIZEN CAN ENTER ANY COMPLAINT
+	public Boolean RegisterData() {
 
 		String strSubject = subject.getText();
 		String strReport = crimeReport.getText();
@@ -115,6 +117,7 @@ public class CitizenPage extends JFrame {
 		Statement s = null;
 		Boolean status = false;
 
+		//COMPLANTS THAT CITIZEN ENTERED IS, SAVING TO THE DATABASE
 		try {
 			//Class.forName("com.mysql.jdbc.Driver");
 
