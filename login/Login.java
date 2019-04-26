@@ -1,4 +1,5 @@
-package CrimeFile;
+package tliy;
+
 
 import java.awt.*;
 import java.awt.event.*;
@@ -6,6 +7,8 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.sql.*;
 import java.util.*;
+
+//Login class is for admin and users. 
 
 public class Login extends JFrame {
 
@@ -39,7 +42,6 @@ public class Login extends JFrame {
 		try {
 			getConnection(); // for connecting to the database
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
@@ -93,8 +95,8 @@ public class Login extends JFrame {
 				else if (Password.getPassword().length == 0) // Checking for empty field
 					JOptionPane.showMessageDialog(null, "Empty fields detected ! Please fill up all fields");
 				else {
-					String user = ID.getText(); // Collecting the input
-					char[] pass = Password.getPassword(); // Collecting the input
+					String user = ID.getText(); // Collecting the id input
+					char[] pass = Password.getPassword(); // Collecting the password input
 					String pwd = String.copyValueOf(pass); // converting from array to string
 
 					// FOR USER LOGIN
@@ -165,7 +167,8 @@ public class Login extends JFrame {
 		}
 		return conn;
 	}
-
+	
+	//this method performs to get user informations from database in order to login to the system.
 	boolean getLogin(String username, String password) {
 		try {
 			conn = this.getConnection();

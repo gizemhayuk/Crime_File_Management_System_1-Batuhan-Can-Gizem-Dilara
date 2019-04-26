@@ -1,4 +1,4 @@
-package CrimeFile;
+package tliy;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import org.junit.jupiter.api.Test;
 
 class UnitTests {
+	
 	Login login = new Login();
 	CriminalRecord criminalRecord = new CriminalRecord();
 
@@ -17,18 +18,18 @@ class UnitTests {
 	}
 	
 	
-	//checks login condition
+	//checks login condition for user
 	@Test
 	public void loginConnection() {
-		assertFalse(login.getLogin("aliyilmaz","ali1995")); // returns false because in database there is no such a person.
-		assertTrue(login.getLogin("gizemhayuk", "gizem123")); //returns true because this person is in the database.
+		assertFalse(login.getLogin("aliyilmaz","ali1995")); // returns false because in database there is no such a user.
+		assertTrue(login.getLogin("gizemhayuk", "gizem123")); //returns true because this user is in the database.
 	}
 	
-	//test for register 
+	//test for adding crime report 
 	@Test
 	public void registerControl() {
-		assertTrue(criminalRecord.RegisterData("can","ozer","23697821621","29061997","Ankara")); //return true because database contains no such a person, so we can add.
-		assertFalse(criminalRecord.RegisterData("", "tekin", "", "", "Izmir")); //returns false because some of inputs are not entered. 
+		assertTrue(criminalRecord.RegisterData("cem","tekin","23697821621","29061997","Ankara","robbery", "haha")); //return true because database contains no such a person with this crime.
+		assertFalse(criminalRecord.RegisterData("", "tekin", "", "", "Izmir","","")); //returns false because some of inputs are not entered. 
 	
 	}
 	

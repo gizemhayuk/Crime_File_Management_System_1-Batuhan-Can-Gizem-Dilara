@@ -1,4 +1,4 @@
-package CrimeFile;
+package tliy;
 
 import java.awt.EventQueue;
 import java.sql.Connection;
@@ -19,14 +19,18 @@ import javax.swing.JPasswordField;
 import java.awt.Color;
 import javax.swing.JTextArea;
 
+//this class is created for user(police).
+//any user can add new crime record or edit crime record.
+
 public class UserDashboard extends JFrame {
 
 	private JTextField textField;
 
 	public static void main(String[] args) {
+		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
-				CriminalRecord frame = new CriminalRecord();
+				UserDashboard frame = new UserDashboard();
 				frame.setTitle("Crime Record System");
 				frame.setVisible(true);
 			}
@@ -53,9 +57,11 @@ public class UserDashboard extends JFrame {
 		JButton btnEnterCriminalRecord = new JButton("Enter Criminal Record");
 		btnEnterCriminalRecord.setFont(new Font("Tahoma", Font.BOLD, 15));
 		btnEnterCriminalRecord.setBounds(205, 104, 226, 34);
+		
+		
 		btnEnterCriminalRecord.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
+				//if user click 'enter criminal record' , then criminal record page opens.
 					CriminalRecord cr = new CriminalRecord();
 					cr.setVisible(true);
 				
@@ -69,7 +75,7 @@ public class UserDashboard extends JFrame {
 		btnEditCriminalRecord.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
-					//class henüz yok
+					//this part will be added.
 				
 			}
 		});
