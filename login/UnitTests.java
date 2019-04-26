@@ -28,8 +28,18 @@ class UnitTests {
 	//test for adding crime report 
 	@Test
 	public void registerControl() {
-		assertTrue(criminalRecord.RegisterData("cem","tekin","23697821621","29061997","Ankara","robbery", "haha")); //return true because database contains no such a person with this crime.
-		assertFalse(criminalRecord.RegisterData("", "tekin", "", "", "Izmir","","")); //returns false because some of inputs are not entered. 
+		
+		//return true because database contains no such a person with this crime.
+		assertTrue(criminalRecord.RegisterData("cem","tekin","23697821621","29061997","Ankara","robbery", "At around 8 am Bank manager Julian Davis arrived to prepare "
+				+ "the bank for opening. He noticed a black van parked in front of the bank, he did not give much heed to it as it was a public "
+				+ " There are two suspects and they entered to the bank and attacked suddenly."
+				+ "After obtaining the money from the bank, the two suspects ran out of the store. The parking lot had been painted earlier that afternoon,"
+				+ " and Cem Tekin identified one of the suspect’s footprints in the drying paint.  "));
+		
+		 //returns false because some of inputs are not entered. 
+		assertFalse(criminalRecord.RegisterData("", "ozkan", "", "", "Izmir","",""));
+		
+		
 	
 	}
 	
