@@ -34,7 +34,7 @@ class UnitTests {
 				+ "the bank for opening. He noticed a black van parked in front of the bank, he did not give much heed to it as it was a public "
 				+ " There are two suspects and they entered to the bank and attacked suddenly."
 				+ "After obtaining the money from the bank, the two suspects ran out of the store. The parking lot had been painted earlier that afternoon,"
-				+ " and Cem Tekin identified one of the suspect’s footprints in the drying paint.  "));
+				+ " and Cem Tekin identified one of the suspectâ€™s footprints in the drying paint.  "));
 		
 		 //returns false because some of inputs are not entered. 
 		assertFalse(criminalRecord.RegisterData("", "ozkan", "", "", "Izmir","",""));
