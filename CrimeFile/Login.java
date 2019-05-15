@@ -149,7 +149,7 @@ public class Login extends JFrame {
 		lblNewLabel.setBounds(-67, 33, 473, 400);
 		// for image icon
 		lblNewLabel.setIcon(new ImageIcon(
-				"C:\\Users\\batuh\\Desktop\\Klasörler\\workspace\\SE 318 - Crime File\\src\\images\\badge-drawing-police-officer-9.png"));
+				"C:\\Users\\batuh\\Desktop\\KlasÃ¶rler\\workspace\\SE 318 - Crime File\\src\\images\\badge-drawing-police-officer-9.png"));
 
 		panel.add(lblNewLabel);
 	}
