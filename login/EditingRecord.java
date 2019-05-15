@@ -262,6 +262,7 @@ public class EditingRecord extends JFrame {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				//User can go back to User Dashboard page when he/she clicks on "Back" button 
+				dispose();
 				UserDashboard UserDash = new UserDashboard();
 				UserDash.setVisible(true);
 			}

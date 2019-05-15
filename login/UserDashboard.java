@@ -27,7 +27,7 @@ public class UserDashboard extends JFrame {
 	private JTextField textField;
 
 	public static void main(String[] args) {
-		
+
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				UserDashboard frame = new UserDashboard();
@@ -57,35 +57,38 @@ public class UserDashboard extends JFrame {
 		JButton btnEnterCriminalRecord = new JButton("Enter Criminal Record");
 		btnEnterCriminalRecord.setFont(new Font("Tahoma", Font.BOLD, 15));
 		btnEnterCriminalRecord.setBounds(205, 104, 226, 34);
-		
-		
+
 		btnEnterCriminalRecord.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				//if user click 'enter criminal record' , then criminal record page shows up.
-					CriminalRecord cr = new CriminalRecord();
-					cr.setVisible(true);
-				
+				// if user click 'enter criminal record' , then criminal record page shows up.
+				dispose();
+				CriminalRecord cr = new CriminalRecord();
+				cr.setVisible(true);
+
 			}
 		});
 		getContentPane().add(btnEnterCriminalRecord);
-		
+
 		JButton btnEditCriminalRecord = new JButton("Edit Criminal Record");
 		btnEditCriminalRecord.setFont(new Font("Tahoma", Font.BOLD, 15));
 		btnEditCriminalRecord.setBounds(205, 161, 226, 34);
 		btnEditCriminalRecord.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				//if user click 'edit criminal record' , then editing criminal record page shows up.
-
+				// if user click 'edit criminal record' , then editing criminal record page
+				// shows up.
+				dispose();
 				EditingRecord er = new EditingRecord();
 				er.setVisible(true);
-				
+
 			}
 		});
 		getContentPane().add(btnEditCriminalRecord);
-		
+
 		JButton btnNewButton = new JButton("Back");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				// If user click "Back" user go back the previous page
+				dispose();
 				Login login = new Login();
 				login.setVisible(true);
 			}
@@ -94,9 +97,6 @@ public class UserDashboard extends JFrame {
 		btnNewButton.setBounds(12, 238, 97, 25);
 		getContentPane().add(btnNewButton);
 
-
 	}
 
-
-	
 }

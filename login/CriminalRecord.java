@@ -139,6 +139,18 @@ public class CriminalRecord extends JFrame {
 			}
 		});
 		getContentPane().add(btnSave);
+		
+		JButton btnBack = new JButton("Back");
+		btnBack.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				dispose();
+				UserDashboard UserDash = new UserDashboard();
+				UserDash.setVisible(true);
+			}
+		});
+		btnBack.setFont(new Font("Tahoma", Font.BOLD, 15));
+		btnBack.setBounds(36, 546, 100, 34);
+		getContentPane().add(btnBack);
 
 
 	}

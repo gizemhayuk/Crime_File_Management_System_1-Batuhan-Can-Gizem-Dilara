@@ -1,6 +1,5 @@
 package CrimeFile;
 
-
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
@@ -101,9 +100,8 @@ public class Login extends JFrame {
 
 					// FOR USER LOGIN
 					if (getLogin(user, pwd)) {
+						dispose();
 						UserDashboard UserDash = new UserDashboard();
-						Login login = new Login();
-						login.setVisible(false);
 						UserDash.setVisible(true);
 					}
 					// FOR ADMIN LOGIN
@@ -169,8 +167,9 @@ public class Login extends JFrame {
 		}
 		return conn;
 	}
-	
-	//this method performs to get user informations from database in order to login to the system.
+
+	// this method performs to get user informations from database in order to login
+	// to the system.
 	boolean getLogin(String username, String password) {
 		try {
 			conn = this.getConnection();
