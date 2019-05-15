@@ -1,6 +1,7 @@
 package CrimeFile;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.HeadlessException;
 
@@ -23,31 +24,33 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextArea;
+import java.awt.Font;
+import javax.swing.SwingConstants;
 
 public class EditingRecord extends JFrame {
 
 	Connection con = null;
 	PreparedStatement pst = null;
 	ResultSet rs = null;
-	
 
 	private JPanel contentPane;
 	private JTable table;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
-	private JTextField textField_4;
-	private JTextField textField_5;
+	private JTextField textField_Name;
+	private JTextField textField_Surname;
+	private JTextField textField_CN;
+	private JTextField textField_DOB;
+	private JTextField textField_BP;
+	private JTextField textField_Subject;
+	private JTextField textField_Report;
+	private JTextField textField_ReportID;
 
-	String strName, strSurname, strCitizenshipNumber, strDOB, strBirthPlace, strSubject, strReport;
-	private JTextField textField_6;
-	private JTextField textField_7;
+	String strName, strSurname, strCitizenshipNumber, strDOB, strBirthPlace, strSubject, strReport, strReportID;
 
 	public void showTableData() {
 		try {
 			con = DriverManager.getConnection(
-					"jdbc:mysql://localhost:3306/new_record?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=Turkey","root","root");
+					"jdbc:mysql://localhost:3306/new_record?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=Turkey",
+					"root", "");
 			String sql = "SELECT * FROM registration";
 			pst = con.prepareStatement(sql);
 			rs = pst.executeQuery();
@@ -83,11 +86,13 @@ public class EditingRecord extends JFrame {
 	 * Create the frame.
 	 */
 	public EditingRecord() {
-		
+
 		showTableData();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 982, 533);
 		contentPane = new JPanel();
+		contentPane.setForeground(Color.WHITE);
+		contentPane.setBackground(new Color(1,50,67));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
@@ -96,89 +101,108 @@ public class EditingRecord extends JFrame {
 		table.setFillsViewportHeight(true);
 		table.setColumnSelectionAllowed(true);
 		table.setCellSelectionEnabled(true);
-		table.setBounds(397, 36, 496, 312);
+		table.setBounds(369, 60, 524, 341);
 		contentPane.add(table);
 
-		textField = new JTextField();
-		textField.setBounds(108, 72, 116, 22);
-		contentPane.add(textField);
-		textField.setColumns(10);
+		textField_Name = new JTextField();
+		textField_Name.setBounds(145, 70, 130, 22);
+		contentPane.add(textField_Name);
+		textField_Name.setColumns(10);
 
-		textField_1 = new JTextField();
-		textField_1.setColumns(10);
-		textField_1.setBounds(108, 107, 116, 22);
-		contentPane.add(textField_1);
+		textField_Surname = new JTextField();
+		textField_Surname.setColumns(10);
+		textField_Surname.setBounds(145, 105, 130, 22);
+		contentPane.add(textField_Surname);
 
-		textField_2 = new JTextField();
-		textField_2.setColumns(10);
-		textField_2.setBounds(108, 142, 116, 22);
-		contentPane.add(textField_2);
+		textField_CN = new JTextField();
+		textField_CN.setColumns(10);
+		textField_CN.setBounds(145, 140, 130, 22);
+		contentPane.add(textField_CN);
 
-		textField_3 = new JTextField();
-		textField_3.setColumns(10);
-		textField_3.setBounds(108, 177, 116, 22);
-		contentPane.add(textField_3);
+		textField_DOB = new JTextField();
+		textField_DOB.setColumns(10);
+		textField_DOB.setBounds(145, 175, 130, 22);
+		contentPane.add(textField_DOB);
 
-		textField_4 = new JTextField();
-		textField_4.setColumns(10);
-		textField_4.setBounds(108, 212, 116, 22);
-		contentPane.add(textField_4);
+		textField_BP = new JTextField();
+		textField_BP.setColumns(10);
+		textField_BP.setBounds(145, 210, 130, 22);
+		contentPane.add(textField_BP);
 
-		textField_5 = new JTextField();
-		textField_5.setColumns(10);
-		textField_5.setBounds(108, 247, 116, 22);
-		contentPane.add(textField_5);
+		textField_Subject = new JTextField();
+		textField_Subject.setColumns(10);
+		textField_Subject.setBounds(145, 245, 130, 22);
+		contentPane.add(textField_Subject);
 
 		JLabel lblNewLabel = new JLabel("Name:");
-		lblNewLabel.setBounds(27, 75, 56, 16);
+		lblNewLabel.setFont(new Font("Century Gothic", Font.PLAIN, 13));
+		lblNewLabel.setForeground(Color.WHITE);
+		lblNewLabel.setBounds(49, 72, 56, 16);
 		contentPane.add(lblNewLabel);
 
 		JLabel lblSurname = new JLabel("Surname:");
-		lblSurname.setBounds(12, 110, 71, 16);
+		lblSurname.setFont(new Font("Century Gothic", Font.PLAIN, 13));
+		lblSurname.setForeground(Color.WHITE);
+		lblSurname.setBounds(49, 107, 71, 16);
 		contentPane.add(lblSurname);
 
 		JLabel lblCitizenNo = new JLabel("Citizen No:");
-		lblCitizenNo.setBounds(12, 145, 71, 16);
+		lblCitizenNo.setFont(new Font("Century Gothic", Font.PLAIN, 13));
+		lblCitizenNo.setForeground(Color.WHITE);
+		lblCitizenNo.setBounds(49, 142, 71, 16);
 		contentPane.add(lblCitizenNo);
 
 		JLabel lblDateOfBirth = new JLabel("Date of Birth:");
-		lblDateOfBirth.setBounds(12, 180, 84, 16);
+		lblDateOfBirth.setFont(new Font("Century Gothic", Font.PLAIN, 13));
+		lblDateOfBirth.setForeground(Color.WHITE);
+		lblDateOfBirth.setBounds(49, 177, 84, 16);
 		contentPane.add(lblDateOfBirth);
 
-		JLabel lblBirthPlace = new JLabel("Birth Place");
-		lblBirthPlace.setBounds(25, 215, 71, 16);
+		JLabel lblBirthPlace = new JLabel("Birth Place:");
+		lblBirthPlace.setFont(new Font("Century Gothic", Font.PLAIN, 13));
+		lblBirthPlace.setForeground(Color.WHITE);
+		lblBirthPlace.setBounds(49, 212, 71, 16);
 		contentPane.add(lblBirthPlace);
 
 		JLabel lblSubject = new JLabel("Subject:");
-		lblSubject.setBounds(27, 250, 56, 16);
+		lblSubject.setFont(new Font("Century Gothic", Font.PLAIN, 13));
+		lblSubject.setForeground(Color.WHITE);
+		lblSubject.setBounds(49, 247, 56, 16);
 		contentPane.add(lblSubject);
 
 		JLabel lblCrimeRecord = new JLabel("Criminal Record:");
-		lblCrimeRecord.setBounds(0, 294, 116, 16);
+		lblCrimeRecord.setFont(new Font("Century Gothic", Font.PLAIN, 13));
+		lblCrimeRecord.setForeground(Color.WHITE);
+		lblCrimeRecord.setBounds(31, 282, 116, 16);
 		contentPane.add(lblCrimeRecord);
-		
-		JLabel lblNewLabel_1 = new JLabel("ReportID: ");
-		lblNewLabel_1.setBounds(12, 332, 56, 16);
+
+		JLabel lblNewLabel_1 = new JLabel("Report ID: ");
+		lblNewLabel_1.setFont(new Font("Century Gothic", Font.PLAIN, 13));
+		lblNewLabel_1.setForeground(Color.WHITE);
+		lblNewLabel_1.setBounds(49, 317, 71, 16);
 		contentPane.add(lblNewLabel_1);
 
 		JButton button = new JButton("Insert");
+		button.setFont(new Font("Tahoma", Font.BOLD, 15));
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
 					String sql = "INSERT INTO registration "
 							+ "(Name,Surname,CitizenshipNumber,DateofBirth,BirthPlace, Subject, CrimeReport,ReportID) "
 							+ "VALUES (?,?,?,?,?,?,?,?)";
-					con = DriverManager.getConnection("jdbc:mysql://localhost:3306/new_record?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=Turkey", "root", "root");
+					con = DriverManager.getConnection(
+							"jdbc:mysql://localhost:3306/new_record?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=Turkey",
+							"root", "");
 					pst = con.prepareStatement(sql);
-					pst.setString(1, textField.getText());
-					pst.setString(2, textField_1.getText());
-					pst.setString(3, textField_2.getText());
-					pst.setString(4, textField_3.getText());
-					pst.setString(5, textField_4.getText());
-					pst.setString(6, textField_5.getText());
-					pst.setString(7, textField_6.getText());
-					pst.setString(8, textField_7.getText());
-					
+					pst.setString(1, textField_Name.getText());
+					pst.setString(2, textField_Surname.getText());
+					pst.setString(3, textField_CN.getText());
+					pst.setString(4, textField_DOB.getText());
+					pst.setString(5, textField_BP.getText());
+					pst.setString(6, textField_Subject.getText());
+					pst.setString(7, textField_Report.getText());
+					pst.setString(8, textField_ReportID.getText());
+
 					pst.executeUpdate();
 					JOptionPane.showMessageDialog(null, "inserted successfully");
 
@@ -193,45 +217,64 @@ public class EditingRecord extends JFrame {
 		contentPane.add(button);
 
 		JButton btnUpdate = new JButton("Update");
+		btnUpdate.setFont(new Font("Tahoma", Font.BOLD, 15));
 		btnUpdate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
 					String sql = "UPDATE registration SET Name=?,Surname=?,CitizenshipNumber=?,DateofBirth=?,BirthPlace=?, Subject=?, CrimeReport=?, ReportID=? WHERE ReportID=?";
 					con = DriverManager.getConnection(
-							"jdbc:mysql://localhost:3306/new_record?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=Turkey","root","root");
+							"jdbc:mysql://localhost:3306/new_record?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=Turkey",
+							"root", "");
 					pst = con.prepareStatement(sql);
-					pst.setString(1, textField.getText());
-					pst.setString(2, textField_1.getText());
-					pst.setString(3, textField_2.getText());
-					pst.setString(4, textField_3.getText());
-					pst.setString(5, textField_4.getText());
-					pst.setString(6, textField_5.getText());
-					pst.setString(7, textField_6.getText());
-					pst.setString(8, textField_7.getText());
-					pst.setString(9, textField_7.getText());
+					pst.setString(1, textField_Name.getText());
+					pst.setString(2, textField_Surname.getText());
+					pst.setString(3, textField_CN.getText());
+					pst.setString(4, textField_DOB.getText());
+					pst.setString(5, textField_BP.getText());
+					pst.setString(6, textField_Subject.getText());
+					pst.setString(7, textField_Report.getText());
+					pst.setString(8, textField_ReportID.getText());
 					pst.executeUpdate();
 					showTableData();
-					JOptionPane.showMessageDialog(null, "updated successfully");
+					JOptionPane.showMessageDialog(null, "Data has updated successfully");
 
 				} catch (SQLException | HeadlessException ex) {
 					JOptionPane.showMessageDialog(null, ex);
 				}
-				
+
 			}
 		});
 		btnUpdate.setBounds(145, 413, 97, 25);
 		contentPane.add(btnUpdate);
+
+		textField_Report = new JTextField();
+		textField_Report.setColumns(10);
+		textField_Report.setBounds(145, 280, 130, 22);
+		contentPane.add(textField_Report);
+
+		textField_ReportID = new JTextField();
+		textField_ReportID.setBounds(145, 315, 130, 22);
+		contentPane.add(textField_ReportID);
+		textField_ReportID.setColumns(10);
+
+		JButton btnNewButton = new JButton("Back");
+		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 15));
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				//User can go back to User Dashboard page when he/she clicks on "Back" button 
+				UserDashboard UserDash = new UserDashboard();
+				UserDash.setVisible(true);
+			}
+		});
+		btnNewButton.setBounds(855, 448, 97, 25);
+		contentPane.add(btnNewButton);
 		
-		textField_6 = new JTextField();
-		textField_6.setColumns(10);
-		textField_6.setBounds(108, 291, 197, 22);
-		contentPane.add(textField_6);
-		
-		textField_7 = new JTextField();
-		textField_7.setBounds(108, 326, 116, 22);
-		contentPane.add(textField_7);
-		textField_7.setColumns(10);
-		
-		
+		JLabel lblNewLabel_2 = new JLabel("EDITING RECORD");
+		lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_2.setForeground(Color.WHITE);
+		lblNewLabel_2.setFont(new Font("Century Gothic", Font.BOLD, 26));
+		lblNewLabel_2.setBounds(213, 13, 524, 34);
+		contentPane.add(lblNewLabel_2);
+
 	}
 }

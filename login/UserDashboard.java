@@ -1,4 +1,4 @@
-package tliy;
+package CrimeFile;
 
 import java.awt.EventQueue;
 import java.sql.Connection;
@@ -61,7 +61,7 @@ public class UserDashboard extends JFrame {
 		
 		btnEnterCriminalRecord.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				//if user click 'enter criminal record' , then criminal record page opens.
+				//if user click 'enter criminal record' , then criminal record page shows up.
 					CriminalRecord cr = new CriminalRecord();
 					cr.setVisible(true);
 				
@@ -74,12 +74,25 @@ public class UserDashboard extends JFrame {
 		btnEditCriminalRecord.setBounds(205, 161, 226, 34);
 		btnEditCriminalRecord.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
-					//this part will be added.
+				//if user click 'edit criminal record' , then editing criminal record page shows up.
+
+				EditingRecord er = new EditingRecord();
+				er.setVisible(true);
 				
 			}
 		});
 		getContentPane().add(btnEditCriminalRecord);
+		
+		JButton btnNewButton = new JButton("Back");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Login login = new Login();
+				login.setVisible(true);
+			}
+		});
+		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 15));
+		btnNewButton.setBounds(12, 238, 97, 25);
+		getContentPane().add(btnNewButton);
 
 
 	}

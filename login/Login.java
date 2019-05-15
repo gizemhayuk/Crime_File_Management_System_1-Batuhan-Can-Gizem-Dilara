@@ -1,4 +1,4 @@
-package tliy;
+package CrimeFile;
 
 
 import java.awt.*;
@@ -102,6 +102,8 @@ public class Login extends JFrame {
 					// FOR USER LOGIN
 					if (getLogin(user, pwd)) {
 						UserDashboard UserDash = new UserDashboard();
+						Login login = new Login();
+						login.setVisible(false);
 						UserDash.setVisible(true);
 					}
 					// FOR ADMIN LOGIN

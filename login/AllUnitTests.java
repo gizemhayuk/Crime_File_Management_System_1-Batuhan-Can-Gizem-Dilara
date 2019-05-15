@@ -1,4 +1,4 @@
-package tliy;
+package CrimeFile;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
