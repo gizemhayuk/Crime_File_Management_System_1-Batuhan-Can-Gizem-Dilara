@@ -1,4 +1,4 @@
-package CrimeFile;
+package tliy;
 
 import java.awt.*;
 
@@ -12,7 +12,8 @@ import java.awt.event.ActionEvent;
 public class CriminalRecord extends JFrame {
 
 	
-	private JTextField Name, Surname, CitizenshipNumber, DOB, BirthPlace, subject,crimeReport;
+	private JTextField Name, Surname, CitizenshipNumber, DOB, BirthPlace, subject,crimeReport,reportID;
+	private JTextField textField;
 
 
 	public static void main(String[] args) {
@@ -28,6 +29,7 @@ public class CriminalRecord extends JFrame {
 	// Create the frame.
 
 	public CriminalRecord() {
+		setTitle("CRIMINAL RECORD SYSTEM");
 		getContentPane().setFont(new Font("Century Gothic", Font.PLAIN, 16));
 		getContentPane().setBackground(new Color(1, 50, 67));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -84,7 +86,12 @@ public class CriminalRecord extends JFrame {
 		lblCrimeReport.setBounds(62, 350, 114, 22);
 		getContentPane().add(lblCrimeReport);
 		
-
+		JLabel reportid = new JLabel("Report ID:");
+		reportid.setForeground(Color.WHITE);
+		reportid.setFont(new Font("Century Gothic", Font.PLAIN, 16));
+		reportid.setBounds(61, 467, 114, 22);
+		getContentPane().add(reportid);
+		
 		Name = new JTextField();
 		Name.setBounds(238, 70, 223, 22);
 		Name.setColumns(10);
@@ -119,19 +126,29 @@ public class CriminalRecord extends JFrame {
 	
 		crimeReport = new JTextField();
 		crimeReport.setColumns(10);
-		crimeReport.setBounds(234, 350, 354, 183);
+		crimeReport.setBounds(229, 351, 244, 99);
 		getContentPane().add(crimeReport);
+		
+		
+		
+		reportID = new JTextField();
+		reportID.setColumns(10);
+		reportID.setBounds(229, 469, 224, 22);
+		getContentPane().add(reportID);
 
 		// Save Button
 		JButton btnSave = new JButton("Save");
 		btnSave.setFont(new Font("Tahoma", Font.BOLD, 15));
 		btnSave.setBounds(488, 546, 100, 34);
 		
+		
 		//if save button is clicked, then people are registered into the system & database.
 		btnSave.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if (RegisterData(Name.getText(), Surname.getText(), CitizenshipNumber.getText(), DOB.getText(), 
-						BirthPlace.getText(), subject.getText(),crimeReport.getText())) {
+						BirthPlace.getText(), subject.getText(),crimeReport.getText(),reportID.getText())) {
+					JOptionPane.showMessageDialog(null, "Saved succefully");
+					dispose();
 					UserDashboard user = new UserDashboard();
 					user.setVisible(true);
 				
@@ -157,7 +174,7 @@ public class CriminalRecord extends JFrame {
 
 	// REGISTERING TO THE SYSTEM
 	public Boolean RegisterData(String strName, String strSurname, String strCitizenshipNumber, String strDOB,
-			String strBirthPlace, String strSubject, String strReport) {
+			String strBirthPlace, String strSubject, String strReport, String strReportId) {
 
 		// checks if user enters nothing
 		if (strName.equals("")) // Name
@@ -205,6 +222,12 @@ public class CriminalRecord extends JFrame {
 			crimeReport.requestFocusInWindow();
 			return false;
 		}
+		if (strReportId.equals("")) // Report id
+		{
+			JOptionPane.showMessageDialog(null, "Please Input (Report ID)");
+			crimeReport.requestFocusInWindow();
+			return false;
+		}
 		
 		
 		
@@ -221,9 +244,9 @@ public class CriminalRecord extends JFrame {
 			s = connect.createStatement();
 
 			// SQL Insert
-			String sql = "INSERT INTO registration " + "(Name,Surname,CitizenshipNumber,DateofBirth,BirthPlace, subject, crimeReport) "
+			String sql = "INSERT INTO registration " + "(Name,Surname,CitizenshipNumber,DateofBirth,BirthPlace, subject, crimeReport, ReportID) "
 					+ "VALUES ('" + strName + "','" + strSurname + "','" + strCitizenshipNumber + "'" + ",'" + strDOB
-					+ "','" + strBirthPlace + "','" + strSubject + "','" + strReport +  "')";
+					+ "','" + strBirthPlace + "','" + strSubject + "','" + strReport +  "'   , '" +strReportId + "')";
 			s.execute(sql);
 
 			// Reset Text Fields
@@ -234,6 +257,8 @@ public class CriminalRecord extends JFrame {
 			BirthPlace.setText("");
 			subject.setText("");
 			crimeReport.setText("");
+			reportID.setText("");
+			
 
 			status = true;
 
