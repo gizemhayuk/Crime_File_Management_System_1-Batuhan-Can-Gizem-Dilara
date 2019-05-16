@@ -1,4 +1,5 @@
-package CrimeFile;
+package tliy;
+
 
 import java.awt.*;
 import java.awt.event.*;
@@ -52,7 +53,7 @@ public class Login extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
-		Password = new JPasswordField();
+		Password = new JPasswordField(); // password field
 		Password.setToolTipText("");
 		Password.setFont(new Font("Century Gothic", Font.PLAIN, 16));
 		Password.setForeground(Color.WHITE);
@@ -60,14 +61,14 @@ public class Login extends JFrame {
 		Password.setBackground((new Color(1, 50, 67)));
 		contentPane.add(Password);
 
-		JLabel lblPassword = new JLabel("Password");
+		JLabel lblPassword = new JLabel("Password"); // password label
 		lblPassword.setBounds(450, 238, 120, 35);
 		lblPassword.setForeground(new Color(255, 255, 255));
 		lblPassword.setBackground(new Color(255, 255, 255));
 		lblPassword.setFont(new Font("Century Gothic", Font.PLAIN, 16));
 		contentPane.add(lblPassword);
 
-		JLabel lblId = new JLabel("Personal Identification Number ");
+		JLabel lblId = new JLabel("Personal Identification Number "); 
 		lblId.setBounds(450, 129, 279, 16);
 		lblId.setForeground(new Color(255, 255, 255));
 		lblId.setFont(new Font("Century Gothic", Font.PLAIN, 16));
@@ -97,19 +98,21 @@ public class Login extends JFrame {
 					String user = ID.getText(); // Collecting the id input
 					char[] pass = Password.getPassword(); // Collecting the password input
 					String pwd = String.copyValueOf(pass); // converting from array to string
-
-					// FOR USER LOGIN
-					if (getLogin(user, pwd)) {
-						dispose();
-						UserDashboard UserDash = new UserDashboard();
-						UserDash.setVisible(true);
-					}
+					
 					// FOR ADMIN LOGIN
-					else if (getLogin(adminname, adminPassword)) {
+					if (ID.getText().equals(adminname)&& Password.getText().equals(adminPassword)) {
+						dispose();
 						AdminPage adminpage = new AdminPage();
 						adminpage.setVisible(true);
 
 					}
+					// FOR USER LOGIN
+					else if (getLogin(user, pwd)) {
+						dispose();
+						UserDashboard UserDash = new UserDashboard();
+						UserDash.setVisible(true);
+					}
+					
 
 					else
 						JOptionPane.showMessageDialog(null, "Try Again!");
@@ -142,14 +145,14 @@ public class Login extends JFrame {
 		panel.setBackground(new Color(228, 241, 254));
 		panel.setBounds(0, 0, 383, 494);
 		contentPane.add(panel);
-		panel.setLayout(null);
+		//panel.setLayout(null);
 
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setBackground(new Color(169, 169, 169));
 		lblNewLabel.setBounds(-67, 33, 473, 400);
 		// for image icon
-		lblNewLabel.setIcon(new ImageIcon(
-				"C:\\Users\\batuh\\Desktop\\Klasörler\\workspace\\SE 318 - Crime File\\src\\images\\badge-drawing-police-officer-9.png"));
+		lblNewLabel.setIcon(new ImageIcon( // image icon for login screen
+				"C:\\Users\\Gizem\\eclipse-workspace\\SE318\\src\\se-318\\badge-drawing-police-officer-9.png"));
 
 		panel.add(lblNewLabel);
 	}
