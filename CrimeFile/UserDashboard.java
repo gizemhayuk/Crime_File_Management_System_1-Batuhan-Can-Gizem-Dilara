@@ -40,6 +40,7 @@ public class UserDashboard extends JFrame {
 	// Create the frame.
 
 	public UserDashboard() {
+		setTitle("USER DASHBOARD");
 		getContentPane().setFont(new Font("Century Gothic", Font.PLAIN, 16));
 		getContentPane().setBackground(new Color(1, 50, 67));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -69,7 +70,7 @@ public class UserDashboard extends JFrame {
 		});
 		getContentPane().add(btnEnterCriminalRecord);
 
-		JButton btnEditCriminalRecord = new JButton("Edit Criminal Record");
+		JButton btnEditCriminalRecord = new JButton("Edit Criminal Record"); // edit criminal record button
 		btnEditCriminalRecord.setFont(new Font("Tahoma", Font.BOLD, 15));
 		btnEditCriminalRecord.setBounds(205, 161, 226, 34);
 		btnEditCriminalRecord.addActionListener(new ActionListener() {
@@ -84,7 +85,7 @@ public class UserDashboard extends JFrame {
 		});
 		getContentPane().add(btnEditCriminalRecord);
 
-		JButton btnNewButton = new JButton("Back");
+		JButton btnNewButton = new JButton("Back"); // back button for going to the previous page
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// If user click "Back" user go back the previous page
